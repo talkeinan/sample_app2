@@ -6,6 +6,7 @@ class StaticPagesController < ApplicationController
   def help
   	@title = "Help"
   	@temp = "test1"
+  	@temp2 = "test2"
   end
 
   def about
