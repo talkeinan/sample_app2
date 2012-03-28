@@ -1,7 +1,9 @@
 @import "bootstrap";
 
-/* universal css definitions */
+/* mixins, variables, etc */
+$grayMediumLight: #eaeaea;
 
+/* universal css definitions */
 html {
 	overflow-y: scroll;
 }
@@ -45,7 +47,7 @@ h2 {
 	margin-bottom: 30px;
 	text-align: center;
 	font-weight: normal;	
-	color: #999;
+	color: $grayLight;
 }
 
 p {
@@ -66,7 +68,7 @@ p {
 	font-weight: bold;
 	line-height: 1;
 	&:hover {
-		color: #fff;
+		color: white;
 		text-decoration: none;
 	}
 }
@@ -75,12 +77,12 @@ p {
 footer {
 	margin-top: 45px;
 	padding-top: 5px;
-	border-top: 1px solid #eaeaea;
-	color: #999;
+	border-top: 1px solid $grayMediumLight;
+	color: $grayLight;
 	a {
-		color: #555;
+		color: $gray;
 		&:hover {
-			color: #222;
+			color: $grayDarker;
 		}	
 	}
 	small {
