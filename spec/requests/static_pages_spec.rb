@@ -1,58 +1,38 @@
 require 'spec_helper'
 
-describe "StaticPages" do 
+describe "StaticPages" do
+	subject {page}
+	base_title = "Ruby on Rails Tutorial Sample App"
+	
+	# same as above line
+	# let(:base_title) {"Ruby on Rails Tutorial Sample App"}
 
-	let(:base_title) {"Ruby on Rails Tutorial Sample App"}
+	describe "Home page" do
+		before { visit root_path }
 
-	describe "Home page" do 
-		it "should have the content 'Sample App'" do
-			visit root_path
-			page.should have_selector('h1', :text => 'Sample App')
-		end 
-
-		it "should have the right title" do
-			visit root_path
-			page.should have_selector('title', 
-				:text => "#{base_title} | Home")
-		end
+		it { should have_selector 'h1', text: 'Sample App' }
+		it { should have_selector 'title', text: "#{base_title}" }
+		it { should_not have_selector 'title', text: '| Home' }
 	end
 
 	describe "Help page" do 
-		it "should have the content 'Help'" do
-			visit help_path
-			page.should have_selector('h1', :text => 'Help')
-		end
+		before { visit help_path }
 
-		it "should have the right title" do
-			visit help_path
-			page.should have_selector('title', 
-				:text => "#{base_title} | Help")
-		end
+		it { should have_selector 'h1', text: 'Help' }
+		it { should have_selector 'title', text: "#{base_title} | Help" }
 	end
   
 	describe "About page" do
-		it "should have the content 'About Us'" do
-			visit about_path
-			page.should have_selector('h1', :text => 'About Us')
-		end
-		it "should have the right title" do
-			visit about_path
-			page.should have_selector('title', 
-				:text => "#{base_title} | About")
-		end	
+		before { visit about_path }
+	
+		it { should have_selector 'h1', text: 'About Us' }
+		it { should have_selector 'title', text: "#{base_title} | About" }
 	end
 
 	describe "Contact page" do
-		it "should have the content 'Contact Us'" do
-			visit contact_path
-			page.should have_selector('h1', :text => 'Contact')
-		end
-		it "should have the right title" do
-			visit contact_path
-			page.should have_selector('title', 
-				:text => "#{base_title} | Contact")
-		end	
+		before { visit contact_path }
+		
+		it { should have_selector 'h1', :text => 'Contact' }
+		it { should have_selector 'title', text: "#{base_title} | Contact" }
 	end
-
-
 end
