@@ -8,6 +8,12 @@
 	  <%= render 'layouts/shim' %>
 	</head>
 	<body>
+		<!-- Hello Bar Script -->
+		<script type="text/javascript" src="//www.hellobar.com/hellobar.js"></script>
+		<script type="text/javascript">
+    		new HelloBar(44724,61188);
+		</script>
+
 		<%= render 'layouts/header' %>
 		<div class="container">
 			<% flash.each do |key, value| %>
