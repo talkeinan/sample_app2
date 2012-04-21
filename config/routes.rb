@@ -10,6 +10,12 @@ SampleApp::Application.routes.draw do
   match '/signin',  to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
 
+
+  resources :users do
+    get 'toggle_approve', :on => :member
+  end
+
+
   #
 
   # The priority is based upon order of creation:
