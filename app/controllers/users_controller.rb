@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :signed_in_user, only: [:edit, :update]
+  before_filter :signed_in_user, only: [:edit, :update, :index]
   before_filter :correct_user,   only: [:edit, :update]
 
   def new
@@ -11,6 +11,12 @@ class UsersController < ApplicationController
   	@user = User.find(params[:id])
   	@title = User.find(params[:id]).name
   end
+
+  def index
+  	@users = User.all
+  	@title = "All users"
+  end
+
 
   def create
   	@user = User.new(params[:user])
