@@ -3,11 +3,8 @@
   	<%= link_to user.name, user %>
   	<% if current_user.admin? && !current_user?(user) %>
     	| <%= link_to "delete", user, method: :delete, confirm: "You sure?" %>
-    	<% if user.admin? %>
-    		| <%= link_to "Revoke Admin Rights", toggle_approve_user_path(user), confirm: "You sure?" %>
-    	<%  else %>
-    		| <%= link_to "Make Admin", toggle_approve_user_path(user), confirm: "You sure?" %>
-    	<% end %>
+    	
+      <%= render partial: 'toggle_admin', locals: { user: user } %>
   	<% end %>
   	<% if current_user?(user) %>
   		<%= link_to "Sign out", signout_path, method: "delete" %>

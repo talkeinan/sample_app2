@@ -52,11 +52,16 @@ class UsersController < ApplicationController
   	end
 
     def toggle_approve  
- 		@user = User.find(params[:id])  
+ 		  @user = User.find(params[:id])  
   		@user.toggle!(:admin)
   		flash[:success] = "User #{@user.name} admin status was set to #{@user.admin?}"  
-  		redirect_to users_path
-	end  
+  		
+      if request.xhr?
+        render partial: 'toggle_admin', locals: { user: @user }
+      else
+        redirect_to users_path
+      end
+	  end  
 
   	private
 

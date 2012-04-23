@@ -1,0 +1,5 @@
+<% if user.admin? %>
+	| <%= link_to "Revoke Admin Rights", toggle_approve_user_path(user), confirm: "You sure?", remote: true, class: "toggle_admin", 'data-current_state' => true %>
+<%  else %>
+	| <%= link_to "Make Admin", toggle_approve_user_path(user), confirm: "You sure?", remote: true, class: "toggle_admin", 'data-current_state' => false %>
+<% end %>
