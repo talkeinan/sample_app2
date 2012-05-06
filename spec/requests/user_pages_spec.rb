@@ -24,10 +24,10 @@ describe "UserPages" do
 
     describe "profile page" do
         let(:user) { FactoryGirl.create(:user) }
-        let(:m1) { FactoryGirl.create(:micropost, user: user, content: "Foo")}
-        let(:m2) { FactoryGirl.create(:micropost, user: user, content: "Bar")}
+        let!(:m1) { FactoryGirl.create(:micropost, user: user, content: "Foo")}
+        let!(:m2) { FactoryGirl.create(:micropost, user: user, content: "Bar")}
 
-        before { visit_user_path(user) }
+        before { visit user_path(user) }
 
         it { should have_selector('h1', text: user.name) }
         it { should have_selector('title', text: user.name) }
